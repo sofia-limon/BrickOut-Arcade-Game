@@ -1,1 +1,7 @@
 # settings
+
+WIDTH, HEIGHT=1000, 630
+FPS=60
+
+# Paddle
+#PAD_WIDTH, PAD_HEIGHT=12, 100
