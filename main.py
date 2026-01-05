@@ -2,9 +2,8 @@
 
 import pygame
 
-from settings import WIDTH, HEIGHT, FPS
-
-pygame .init()
+from settings import WIDTH, HEIGHT, FPS, BLACK
+from game import Game
 
 def play():
     pygame.init()
@@ -12,12 +11,18 @@ def play():
     pygame.display.set_caption("Brick Out")
     clock = pygame.time.Clock()
 
+    game = Game(screen)
+
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
+        game.handle_input()
+        game.update()
+        game.draw()
+        
         pygame.display.flip()
         clock.tick(FPS)
     pygame.quit()
