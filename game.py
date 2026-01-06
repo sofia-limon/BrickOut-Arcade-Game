@@ -9,6 +9,7 @@ from settings import (
 
 from objects.paddle import Paddle
 from objects.wall import Wall
+from objects.ball import Ball
 
 class Game:
     def __init__(self, screen):
@@ -21,6 +22,7 @@ class Game:
             Wall(direction=True,   x=W_RX, y=W_RY),
             Wall(direction=False,  x=W_UX, y=W_UY),
             ]
+        self.ball = Ball()
 
     def handle_input(self):
         keys = pygame.key.get_pressed()
@@ -32,9 +34,11 @@ class Game:
 
     def update(self):
         self.paddle.move(self.dir)
+        self.ball.move()
 
     def draw(self):
         self.screen.fill(BLACK)
         self.paddle.draw(self.screen)
         for w in self.walls:
             w.draw(self.screen)
+        self.ball.draw(self.screen)
